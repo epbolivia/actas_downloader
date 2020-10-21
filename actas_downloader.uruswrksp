@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<UrusStudio_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="actas_downloader.usp">
+			<Depends filename="modules/V16X/v16xlib.usp" />
+		</Project>
+		<Project filename="modules/V16X/v16xlib.usp" />
+	</Workspace>
+</UrusStudio_workspace_file>
