@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxDialog" name="actas_downloaderDialog">
+		<title>Actas Downloader</title>
+		<centered>1</centered>
+		<size>404,285</size>
+	</object>
+</wxsmith>
