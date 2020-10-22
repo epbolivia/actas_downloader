@@ -3,6 +3,21 @@
 	<object class="wxDialog" name="actas_downloaderDialog">
 		<title>Actas Downloader</title>
 		<centered>1</centered>
-		<size>404,285</size>
+		<size>397,275</size>
+		<handler function="OnClose" entry="EVT_CLOSE" />
+		<object class="wxPanel" name="ID_PANEL1" variable="Panel1" member="yes">
+			<pos>0,0</pos>
+			<size>400,280</size>
+			<object class="wxButton" name="ID_BUTTON1" variable="start_curl_b" member="yes">
+				<label>Iniciar</label>
+				<pos>24,232</pos>
+				<handler function="Onstart_curl_bClick" entry="EVT_BUTTON" />
+			</object>
+			<object class="wxButton" name="ID_BUTTON2" variable="quit_b" member="yes">
+				<label>Cerrar</label>
+				<pos>296,232</pos>
+				<handler function="OnQuit" entry="EVT_BUTTON" />
+			</object>
+		</object>
 	</object>
 </wxsmith>
