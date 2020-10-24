@@ -20,6 +20,7 @@
 				<Linker>
 					<Add option="`wx-config  --version=2.8 --static=no --unicode=yes --debug=no --libs`" />
 					<Add library="v16x" />
+					<Add library="curl" />
 					<Add directory="build/debug" />
 				</Linker>
 			</Target>
@@ -32,11 +33,16 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="`wx-config  --version=2.8 --static=no --unicode=yes --debug=no --cflags`" />
+					<Add option="-fdata-sections" />
+					<Add option="-ffunction-sections" />
+					<Add option="-fno-exceptions" />
+					<Add option="-fsigned-char" />
 					<Add option="-D_UNIX_" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 					<Add option="`wx-config  --version=2.8 --static=no --unicode=yes --debug=no --libs`" />
+					<Add option="-Wl,--gc-sections" />
 					<Add library="v16x" />
 					<Add library="curl" />
 					<Add directory="build/release" />
