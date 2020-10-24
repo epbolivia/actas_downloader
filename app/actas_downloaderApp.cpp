@@ -5,7 +5,15 @@
 #include <wx/image.h>
 //*)
 
+char *actas_downloaderDialog::msg = {"Actas Downloader is a multithreaded HTTP file downloader\n" \
+                        "Copyright (c) 2020 Hiroshi Takey F. <htakey@gmail.com>\n" \
+                        "This program comes with ABSOLUTELY NO WARRANTY.\n" \
+                        "This is free software; licensed under GPLv3.\n" \
+                        "See source distribution for detailed copyright notices.\n"};
+
 IMPLEMENT_APP_NO_MAIN(actas_downloaderApp);
+
+//UR_V16X *actas_downloaderDialog::v16x;
 
 bool actas_downloaderApp::OnInit()
 {
@@ -33,11 +41,15 @@ int actas_downloaderApp::OnExit()
 
 void SHAL_SYSTEM::system_shutdown()
 {
-    sig_evt = 1;
-    wxGetApp().v16x.shutdown_all();
-    SHAL_SYSTEM::printf("Shutdown main\n");
-    wxGetApp().Dlg->Close();
-    wxGetApp().Dlg->Destroy();
+    if (sig_evt) {
+        _isr_timer_running = false;
+        SHAL_SYSTEM::delay_sec(2);
+        //wxGetApp().v16x.shutdown_all();
+        //wxGetApp().Dlg->v16x->shutdown_all();
+        SHAL_SYSTEM::printf("Shutdown main\n");
+        wxGetApp().Dlg->Close();
+        wxGetApp().Dlg->Destroy();
+    }
 }
 
 void main_entry()
@@ -48,13 +60,14 @@ void main_entry()
 
 void configure()
 {
-    const char msg[] = {"Actas Downloader is a multithreaded HTTP file downloader\n" \
+/*
+    wxGetApp().Dlg->msg = {"Actas Downloader is a multithreaded HTTP file downloader\n" \
                         "Copyright (c) 2020 Hiroshi Takey F. <htakey@gmail.com>\n" \
                         "This program comes with ABSOLUTELY NO WARRANTY.\n" \
                         "This is free software; licensed under AGPLv3.\n" \
                         "See source distribution for detailed copyright notices.\n"};
-
-    SHAL_SYSTEM::printf("%s\n", msg);
+*/
+    SHAL_SYSTEM::printf("%s\n", wxGetApp().Dlg->msg);
     SHAL_SYSTEM::printf("Configuring\n");
 
     SHAL_SYSTEM::init();
@@ -70,5 +83,5 @@ void configure()
 void loop()
 {
     SHAL_SYSTEM::printf("Loop\n");
-    SHAL_SYSTEM::delay_sec(1);
+    SHAL_SYSTEM::delay_sec(5);
 }

@@ -10,7 +10,7 @@ class actas_downloaderApp : public wxApp
         virtual bool OnInit();
         virtual int OnExit();
         actas_downloaderDialog *Dlg;
-        UR_V16X v16x;
+        //UR_V16X v16x;
 };
 
 #endif // ACTAS_DOWNLOADERAPP_H

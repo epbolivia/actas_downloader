@@ -3,20 +3,134 @@
 	<object class="wxDialog" name="actas_downloaderDialog">
 		<title>Actas Downloader</title>
 		<centered>1</centered>
-		<size>397,275</size>
+		<size>480,360</size>
+		<id_arg>0</id_arg>
+		<style>wxDEFAULT_DIALOG_STYLE|wxWANTS_CHARS</style>
 		<handler function="OnClose" entry="EVT_CLOSE" />
-		<object class="wxPanel" name="ID_PANEL1" variable="Panel1" member="yes">
-			<pos>0,0</pos>
-			<size>400,280</size>
-			<object class="wxButton" name="ID_BUTTON1" variable="start_curl_b" member="yes">
-				<label>Iniciar</label>
-				<pos>24,232</pos>
-				<handler function="Onstart_curl_bClick" entry="EVT_BUTTON" />
+		<handler function="OnPaint" entry="EVT_PAINT" />
+		<handler function="OnKeyUp" entry="EVT_KEY_UP" />
+		<object class="wxNotebook" name="ID_NOTEBOOK1" variable="Notebook1" member="yes">
+			<size>479,359</size>
+			<style>wxBORDER_NONE</style>
+			<object class="notebookpage">
+				<object class="wxPanel" name="ID_PANEL1" variable="Panel1" member="yes">
+					<size>479,359</size>
+					<style>wxBORDER_NONE</style>
+					<object class="wxButton" name="ID_BUTTON1" variable="start_curl_b" member="yes">
+						<label>Descargar</label>
+						<pos>16,288</pos>
+						<handler function="Onstart_curl_bClick" entry="EVT_BUTTON" />
+					</object>
+					<object class="wxButton" name="ID_BUTTON2" variable="quit_b" member="yes">
+						<label>Cerrar</label>
+						<pos>376,288</pos>
+						<handler function="OnQuit" entry="EVT_BUTTON" />
+					</object>
+					<object class="wxRadioBox" name="ID_RADIOBOX1" variable="dpto_radioctrl" member="yes">
+						<label>Departamento:</label>
+						<content>
+							<item>Chuquisaca        </item>
+							<item>La Paz</item>
+							<item>Cochabamba</item>
+							<item>Oruro        </item>
+							<item>Potosi</item>
+							<item>Tarija</item>
+							<item>Santa Cruz</item>
+							<item>Beni</item>
+							<item>Pando</item>
+						</content>
+						<dimension>3</dimension>
+						<pos>16,128</pos>
+						<size>448,104</size>
+						<handler function="Ondpto_radioctrlSelect" entry="EVT_RADIOBOX" />
+					</object>
+					<object class="wxSlider" name="ID_SLIDER1" variable="index_slider_ctrl" member="yes">
+						<value>100</value>
+						<min>100</min>
+						<max>10000</max>
+						<pagesize>100</pagesize>
+						<tick>100</tick>
+						<pos>16,32</pos>
+						<size>448,27</size>
+						<handler function="Onindex_slider_ctrlCmdScroll" entry="EVT_COMMAND_SCROLL" />
+						<handler function="Onindex_slider_ctrlCmdScroll" entry="EVT_COMMAND_SCROLL_THUMBTRACK" />
+						<handler function="Onindex_slider_ctrlCmdScrollThumbRelease" entry="EVT_COMMAND_SCROLL_THUMBRELEASE" />
+					</object>
+					<object class="wxStaticText" name="ID_STATICTEXT2" variable="index_slider_name_txtctrl" member="yes">
+						<label>Rastreo Max.:</label>
+						<pos>24,16</pos>
+						<style>wxST_NO_AUTORESIZE</style>
+					</object>
+					<object class="wxStaticText" name="ID_STATICTEXT3" variable="index_slider_value_lblctrl" member="yes">
+						<label>100</label>
+						<pos>128,16</pos>
+						<size>56,15</size>
+						<style>wxST_NO_AUTORESIZE</style>
+					</object>
+					<object class="wxGauge" name="ID_GAUGE1" variable="cnt_download_gauge" member="yes">
+						<pos>22,88</pos>
+						<size>441,8</size>
+					</object>
+					<object class="wxStaticText" name="ID_STATICTEXT4" variable="StaticText1" member="yes">
+						<label>Descargados:</label>
+						<pos>24,64</pos>
+						<style>wxST_NO_AUTORESIZE</style>
+					</object>
+					<object class="wxStaticText" name="ID_STATICTEXT5" variable="cnt_download_lblctrl" member="yes">
+						<label>0</label>
+						<pos>120,64</pos>
+						<size>56,15</size>
+						<style>wxST_NO_AUTORESIZE</style>
+					</object>
+					<object class="wxStaticText" name="ID_STATICTEXT6" variable="StaticText2" member="yes">
+						<label>Total:</label>
+						<pos>208,64</pos>
+						<style>wxST_NO_AUTORESIZE</style>
+					</object>
+					<object class="wxStaticText" name="ID_STATICTEXT7" variable="total_lblctrl" member="yes">
+						<label>0</label>
+						<pos>248,64</pos>
+						<size>72,15</size>
+						<style>wxST_NO_AUTORESIZE</style>
+					</object>
+				</object>
+				<label>Principal</label>
+				<selected>1</selected>
 			</object>
-			<object class="wxButton" name="ID_BUTTON2" variable="quit_b" member="yes">
-				<label>Cerrar</label>
-				<pos>296,232</pos>
-				<handler function="OnQuit" entry="EVT_BUTTON" />
+			<object class="notebookpage">
+				<object class="wxPanel" name="ID_PANEL2" variable="Panel2" member="yes">
+					<pos>374,11</pos>
+					<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="base_url_txtctrl" member="yes">
+						<value>http://localhost:9998/test/</value>
+						<pos>16,42</pos>
+						<size>449,25</size>
+						<handler function="Onbase_url_txtctrlText" entry="EVT_TEXT" />
+					</object>
+					<object class="wxStaticText" name="ID_STATICTEXT1" variable="base_url_label" member="yes">
+						<label>Base URL:</label>
+						<pos>16,24</pos>
+						<style>wxST_NO_AUTORESIZE</style>
+					</object>
+					<object class="wxCheckBox" name="ID_CHECKBOX1" variable="server_mode_chkbox" member="yes">
+						<label>Enable Server</label>
+						<pos>344,80</pos>
+						<handler function="Onserver_mode_chkboxClick" entry="EVT_CHECKBOX" />
+					</object>
+				</object>
+				<label>Advanced</label>
+			</object>
+			<object class="notebookpage">
+				<object class="wxPanel" name="ID_PANEL3" variable="Panel3" member="yes">
+					<pos>258,10</pos>
+					<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="about_txtctrl" member="yes">
+						<value>Text</value>
+						<pos>0,16</pos>
+						<size>479,100</size>
+						<enabled>0</enabled>
+						<style>wxTE_NO_VSCROLL|wxTE_MULTILINE|wxTE_READONLY|wxTE_AUTO_URL|wxTE_CENTRE|wxBORDER_NONE</style>
+					</object>
+				</object>
+				<label>Acerca de...</label>
 			</object>
 		</object>
 	</object>
