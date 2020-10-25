@@ -15,7 +15,7 @@
 //*)
 
 #include <UR_V16X/UR_V16X.h>
-#include <curl/curl.h>
+//#include <curl/curl.h>
 
 typedef struct __actas_config_s {
     uint32_t base_dpto_prefix;
@@ -28,7 +28,13 @@ typedef struct __actas_config_s {
     uint8_t show_url;
     bool is_show_url;
     bool is_server_running;
+    bool stop_download;
 } actas_config_t;
+
+typedef struct __xfrprogress_s {
+    FILE *pagefile;
+    char filename[50];
+} xfr_progress_t;
 
 class actas_downloaderDialog: public wxDialog
 {
@@ -38,15 +44,23 @@ class actas_downloaderDialog: public wxDialog
         virtual ~actas_downloaderDialog();
         void configure();
         void OnInternalIdle() override;
+        static size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream);
+        //static int progress_callback(void *clientp,   double dltotal,   double dlnow,   double ultotal,   double ulnow);
+        void OnUpdateUI();
+
         UR_V16X *v16x;
         static char *msg;
+
+        static actas_config_t *get_config()
+        {
+            return &actas_config;
+        }
 
     private:
 
         static actas_config_t actas_config;
         void fire_process(void);
-        static size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream);
-        void add_transfer(CURLM *cm, int i, FILE *pagefile, char *urls);
+        //void add_transfer(CURLM *cm, int i, FILE *pagefile, char *urls);
         void generate_filetest(int cnt);
         void curl_main(uint32_t base_num);
         void curl_main();
@@ -68,6 +82,7 @@ class actas_downloaderDialog: public wxDialog
         void OnPaint(wxPaintEvent& event);
         void OnKeyUp(wxKeyEvent& event);
         void Onserver_mode_chkboxClick(wxCommandEvent& event);
+        void Onstop_download_bClick(wxCommandEvent& event);
         //*)
 
         //(*Identifiers(actas_downloaderDialog)
@@ -82,6 +97,7 @@ class actas_downloaderDialog: public wxDialog
         static const long ID_STATICTEXT5;
         static const long ID_STATICTEXT6;
         static const long ID_STATICTEXT7;
+        static const long ID_BUTTON3;
         static const long ID_PANEL1;
         static const long ID_TEXTCTRL1;
         static const long ID_STATICTEXT1;
@@ -95,6 +111,7 @@ class actas_downloaderDialog: public wxDialog
         //(*Declarations(actas_downloaderDialog)
         wxButton* quit_b;
         wxButton* start_curl_b;
+        wxButton* stop_download_b;
         wxCheckBox* server_mode_chkbox;
         wxGauge* cnt_download_gauge;
         wxNotebook* Notebook1;

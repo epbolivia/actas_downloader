@@ -11,19 +11,18 @@
 		<handler function="OnKeyUp" entry="EVT_KEY_UP" />
 		<object class="wxNotebook" name="ID_NOTEBOOK1" variable="Notebook1" member="yes">
 			<size>479,359</size>
-			<style>wxBORDER_NONE</style>
 			<object class="notebookpage">
 				<object class="wxPanel" name="ID_PANEL1" variable="Panel1" member="yes">
 					<size>479,359</size>
-					<style>wxBORDER_NONE</style>
+					<style>0</style>
 					<object class="wxButton" name="ID_BUTTON1" variable="start_curl_b" member="yes">
 						<label>Descargar</label>
-						<pos>16,288</pos>
+						<pos>16,296</pos>
 						<handler function="Onstart_curl_bClick" entry="EVT_BUTTON" />
 					</object>
 					<object class="wxButton" name="ID_BUTTON2" variable="quit_b" member="yes">
 						<label>Cerrar</label>
-						<pos>376,288</pos>
+						<pos>384,296</pos>
 						<handler function="OnQuit" entry="EVT_BUTTON" />
 					</object>
 					<object class="wxRadioBox" name="ID_RADIOBOX1" variable="dpto_radioctrl" member="yes">
@@ -40,8 +39,8 @@
 							<item>Pando</item>
 						</content>
 						<dimension>3</dimension>
-						<pos>16,128</pos>
-						<size>448,104</size>
+						<pos>16,176</pos>
+						<size>440,88</size>
 						<handler function="Ondpto_radioctrlSelect" entry="EVT_RADIOBOX" />
 					</object>
 					<object class="wxSlider" name="ID_SLIDER1" variable="index_slider_ctrl" member="yes">
@@ -68,30 +67,35 @@
 						<style>wxST_NO_AUTORESIZE</style>
 					</object>
 					<object class="wxGauge" name="ID_GAUGE1" variable="cnt_download_gauge" member="yes">
-						<pos>22,88</pos>
-						<size>441,8</size>
+						<pos>24,120</pos>
+						<size>432,8</size>
 					</object>
 					<object class="wxStaticText" name="ID_STATICTEXT4" variable="StaticText1" member="yes">
 						<label>Descargados:</label>
-						<pos>24,64</pos>
+						<pos>24,96</pos>
 						<style>wxST_NO_AUTORESIZE</style>
 					</object>
 					<object class="wxStaticText" name="ID_STATICTEXT5" variable="cnt_download_lblctrl" member="yes">
 						<label>0</label>
-						<pos>120,64</pos>
+						<pos>120,96</pos>
 						<size>56,15</size>
 						<style>wxST_NO_AUTORESIZE</style>
 					</object>
 					<object class="wxStaticText" name="ID_STATICTEXT6" variable="StaticText2" member="yes">
 						<label>Total:</label>
-						<pos>208,64</pos>
+						<pos>208,96</pos>
 						<style>wxST_NO_AUTORESIZE</style>
 					</object>
 					<object class="wxStaticText" name="ID_STATICTEXT7" variable="total_lblctrl" member="yes">
 						<label>0</label>
-						<pos>248,64</pos>
+						<pos>248,96</pos>
 						<size>72,15</size>
 						<style>wxST_NO_AUTORESIZE</style>
+					</object>
+					<object class="wxButton" name="ID_BUTTON3" variable="stop_download_b" member="yes">
+						<label>Detener</label>
+						<pos>104,296</pos>
+						<handler function="Onstop_download_bClick" entry="EVT_BUTTON" />
 					</object>
 				</object>
 				<label>Principal</label>
@@ -100,6 +104,7 @@
 			<object class="notebookpage">
 				<object class="wxPanel" name="ID_PANEL2" variable="Panel2" member="yes">
 					<pos>374,11</pos>
+					<style>0</style>
 					<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="base_url_txtctrl" member="yes">
 						<value>http://localhost:9998/test/</value>
 						<pos>16,42</pos>
@@ -122,12 +127,14 @@
 			<object class="notebookpage">
 				<object class="wxPanel" name="ID_PANEL3" variable="Panel3" member="yes">
 					<pos>258,10</pos>
+					<style>0</style>
 					<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="about_txtctrl" member="yes">
 						<value>Text</value>
 						<pos>0,16</pos>
 						<size>479,100</size>
 						<enabled>0</enabled>
-						<style>wxTE_NO_VSCROLL|wxTE_MULTILINE|wxTE_READONLY|wxTE_AUTO_URL|wxTE_CENTRE|wxBORDER_NONE</style>
+						<fg>wxSYS_COLOUR_BTNTEXT</fg>
+						<style>wxTE_NO_VSCROLL|wxTE_MULTILINE|wxTE_READONLY|wxTE_AUTO_URL|wxTE_CENTRE|wxNO_BORDER</style>
 					</object>
 				</object>
 				<label>Acerca de...</label>

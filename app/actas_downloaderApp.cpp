@@ -5,6 +5,8 @@
 #include <wx/image.h>
 //*)
 
+actas_downloaderDialog *Dlg;
+
 char *actas_downloaderDialog::msg = {"Actas Downloader is a multithreaded HTTP file downloader\n" \
                         "Copyright (c) 2020 Hiroshi Takey F. <htakey@gmail.com>\n" \
                         "This program comes with ABSOLUTELY NO WARRANTY.\n" \
@@ -47,8 +49,8 @@ void SHAL_SYSTEM::system_shutdown()
         //wxGetApp().v16x.shutdown_all();
         //wxGetApp().Dlg->v16x->shutdown_all();
         SHAL_SYSTEM::printf("Shutdown main\n");
-        wxGetApp().Dlg->Close();
-        wxGetApp().Dlg->Destroy();
+        Dlg->Close();
+        Dlg->Destroy();
     }
 }
 
@@ -60,21 +62,15 @@ void main_entry()
 
 void configure()
 {
-/*
-    wxGetApp().Dlg->msg = {"Actas Downloader is a multithreaded HTTP file downloader\n" \
-                        "Copyright (c) 2020 Hiroshi Takey F. <htakey@gmail.com>\n" \
-                        "This program comes with ABSOLUTELY NO WARRANTY.\n" \
-                        "This is free software; licensed under AGPLv3.\n" \
-                        "See source distribution for detailed copyright notices.\n"};
-*/
-    SHAL_SYSTEM::printf("%s\n", wxGetApp().Dlg->msg);
+    SHAL_SYSTEM::printf("%s\n", Dlg->msg);
     SHAL_SYSTEM::printf("Configuring\n");
+    fflush(stdout);
 
     SHAL_SYSTEM::init();
     SHAL_SYSTEM::run_thread_process(&main_entry);
     SHAL_SYSTEM::delay_sec(1);
 
-    wxGetApp().Dlg->configure();
+    Dlg->configure();
 
     SHAL_SYSTEM::printf("Started\n");
     fflush(stdout);
@@ -82,6 +78,9 @@ void configure()
 
 void loop()
 {
+#if V16X_DEBUG >= 1
     SHAL_SYSTEM::printf("Loop\n");
-    SHAL_SYSTEM::delay_sec(5);
+#endif // V16X_DEBUG
+    SHAL_SYSTEM::delay_ms(200);
+    Dlg->OnUpdateUI();
 }
