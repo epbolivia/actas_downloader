@@ -50,7 +50,7 @@ void SHAL_SYSTEM::system_shutdown()
         //wxGetApp().Dlg->v16x->shutdown_all();
         SHAL_SYSTEM::printf("Shutdown main\n");
         Dlg->Close();
-        Dlg->Destroy();
+        //Dlg->Destroy();
     }
 }
 
@@ -81,6 +81,10 @@ void loop()
 #if V16X_DEBUG >= 1
     SHAL_SYSTEM::printf("Loop\n");
 #endif // V16X_DEBUG
+#ifdef __MSYS__
     SHAL_SYSTEM::delay_ms(200);
     Dlg->OnUpdateUI();
+#else
+    SHAL_SYSTEM::delay_sec(1);
+#endif // __MSYS__
 }
