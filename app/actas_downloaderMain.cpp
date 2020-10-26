@@ -67,7 +67,7 @@ actas_downloaderDialog::actas_downloaderDialog(wxWindow* parent,wxWindowID id)
     	_("Beni"),
     	_("Pando")
     };
-    dpto_radioctrl = new wxRadioBox(Panel1, ID_RADIOBOX1, _("Departamento:"), wxPoint(16,176), wxSize(440,88), 9, __wxRadioBoxChoices_1, 3, 0, wxDefaultValidator, _T("ID_RADIOBOX1"));
+    dpto_radioctrl = new wxRadioBox(Panel1, ID_RADIOBOX1, _("Departamento:"), wxPoint(16,176), wxSize(440,103), 9, __wxRadioBoxChoices_1, 3, 0, wxDefaultValidator, _T("ID_RADIOBOX1"));
     dpto_radioctrl->SetSelection(0);
     index_slider_ctrl = new wxSlider(Panel1, ID_SLIDER1, 100, 100, 10000, wxPoint(16,32), wxSize(448,27), 0, wxDefaultValidator, _T("ID_SLIDER1"));
     index_slider_ctrl->SetPageSize(100);
@@ -86,7 +86,7 @@ actas_downloaderDialog::actas_downloaderDialog(wxWindow* parent,wxWindowID id)
     server_mode_chkbox = new wxCheckBox(Panel2, ID_CHECKBOX1, _("Enable Server"), wxPoint(344,80), wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX1"));
     server_mode_chkbox->SetValue(false);
     Panel3 = new wxPanel(Notebook1, ID_PANEL3, wxPoint(258,10), wxDefaultSize, 0, _T("ID_PANEL3"));
-    about_txtctrl = new wxTextCtrl(Panel3, ID_TEXTCTRL2, _("Text"), wxPoint(0,16), wxSize(479,100), wxTE_NO_VSCROLL|wxTE_MULTILINE|wxTE_READONLY|wxTE_AUTO_URL|wxTE_CENTRE|wxNO_BORDER, wxDefaultValidator, _T("ID_TEXTCTRL2"));
+    about_txtctrl = new wxTextCtrl(Panel3, ID_TEXTCTRL2, _("Text"), wxPoint(0,16), wxSize(479,100), wxTE_NO_VSCROLL|wxTE_MULTILINE|wxTE_READONLY|wxTE_AUTO_URL|wxTE_CENTRE|wxBORDER_NONE, wxDefaultValidator, _T("ID_TEXTCTRL2"));
     about_txtctrl->Disable();
     about_txtctrl->SetForegroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNTEXT));
     Notebook1->AddPage(Panel1, _("Principal"), true);
@@ -119,6 +119,7 @@ actas_downloaderDialog::actas_downloaderDialog(wxWindow* parent,wxWindowID id)
     _read_url(actas_config.base_url);
     base_url_txtctrl->SetValue(wxString::FromAscii(actas_config.base_url));
     Notebook1->SetFocus();
+    stop_download_b->Enable(false);
 #ifndef __MSYS__
     Panel2->Show(false);
 #else

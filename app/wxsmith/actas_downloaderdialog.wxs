@@ -40,7 +40,7 @@
 						</content>
 						<dimension>3</dimension>
 						<pos>16,176</pos>
-						<size>440,88</size>
+						<size>440,103</size>
 						<handler function="Ondpto_radioctrlSelect" entry="EVT_RADIOBOX" />
 					</object>
 					<object class="wxSlider" name="ID_SLIDER1" variable="index_slider_ctrl" member="yes">
@@ -134,7 +134,7 @@
 						<size>479,100</size>
 						<enabled>0</enabled>
 						<fg>wxSYS_COLOUR_BTNTEXT</fg>
-						<style>wxTE_NO_VSCROLL|wxTE_MULTILINE|wxTE_READONLY|wxTE_AUTO_URL|wxTE_CENTRE|wxNO_BORDER</style>
+						<style>wxTE_NO_VSCROLL|wxTE_MULTILINE|wxTE_READONLY|wxTE_AUTO_URL|wxTE_CENTRE|wxBORDER_NONE</style>
 					</object>
 				</object>
 				<label>Acerca de...</label>
