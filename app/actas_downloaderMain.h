@@ -15,26 +15,7 @@
 //*)
 
 #include <UR_V16X/UR_V16X.h>
-//#include <curl/curl.h>
-
-typedef struct __actas_config_s {
-    uint32_t base_dpto_prefix;
-    uint16_t cnt_upto;
-    char dpto[20];
-    char base_url[256];
-    uint32_t cnt_completed;
-    uint32_t cnt_download;
-    uint32_t key_timeout;
-    uint8_t show_url;
-    bool is_show_url;
-    bool is_server_running;
-    bool stop_download;
-} actas_config_t;
-
-typedef struct __xfrprogress_s {
-    FILE *pagefile;
-    char filename[50];
-} xfr_progress_t;
+#include <UR_HTTP_Dl/UR_HTTP_Dl.h>
 
 class actas_downloaderDialog: public wxDialog
 {

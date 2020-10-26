@@ -183,12 +183,16 @@
 			<Add option="-DSERVER_TEST" />
 			<Add directory="." />
 			<Add directory="modules/V16X/libraries" />
+			<Add directory="libraries" />
 		</Compiler>
 		<Unit filename="app/actas_downloaderApp.cpp" />
 		<Unit filename="app/actas_downloaderApp.h" />
 		<Unit filename="app/actas_downloaderMain.cpp" />
 		<Unit filename="app/actas_downloaderMain.h" />
 		<Unit filename="app/wxsmith/actas_downloaderdialog.wxs" />
+		<Unit filename="libraries/UR_HTTP_Dl/UR_HTTP_Dl.cpp" />
+		<Unit filename="libraries/UR_HTTP_Dl/UR_HTTP_Dl.h" />
+		<Unit filename="libraries/UR_HTTP_Dl/UR_HTTP_Types.h" />
 		<Extensions>
 			<envvars />
 			<code_completion />
